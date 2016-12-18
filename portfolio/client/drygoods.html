@@ -1,0 +1,57 @@
+
+<template name="drygoods">
+  <a href="/drygoods/food" ><img src="krillgran.jpg" alt="food"/></a>
+    <a href="#" class="fc-filter" data-fc-filter-field="category" data-fc-filter-value="watercare" ><img src="krillgran.jpg" alt="food"/></a>
+</template>
+<template name="goods">
+
+      <h2>Dry goods</h2>
+      <div class="row row-content">
+
+        <ul class="nav nav-tabs">
+          <li><a href="#" class="js-unset-filter">All</a></li>
+          <li><a href="#" class="js-set-food-filter">Food</a></li>
+          <li><a href="#" class="js-set-softlinefood-filter">Soft Line Food</a></li>
+          <li><a href="#" class="js-set-watertreatments-filter">Water Treatments</a></li>
+          <li><a href="#" class="js-set-accessories-filter">Accessories</a></li>
+        </ul>
+
+        <!--Card-->
+          {{#each goods}}
+          <div class="col-md-3 col-sm-6 col-xs-12">
+
+
+          <div class="card text-xs-center ">
+            <img class="card-image  img-fluid" src="{{img_src}}" alt="{{name}}">
+
+
+            <div class="card-block">
+                <h4 class="card-title"> &pound;{{price}}</h4>
+                <p class="card-text">{{name}}</p>
+                <a href="/drygoods/{{_id}}" class="link-text"><h5>More <i class="fa fa-chevron-right"></i></h5></a>
+
+            </div>
+        </div>
+      </div>
+        {{/each}}
+        <!--/.Card-->
+      </div>
+
+</template>
+
+<template name="product">
+
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object product " src="{{img_src}}" alt="{{name}}">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{name}}</h4>
+      <p>&pound;{{price}}</p>
+      <p>{{description}}</p>
+      <a href="/drygoods" class="link-text"><h5> <i class="fa fa-chevron-left"></i>Back</h5></a>
+    </div>
+  </div>
+</template>
