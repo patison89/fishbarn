@@ -1,12 +1,12 @@
 
 <head> <style>
-@import url('https://fonts.googleapis.com/css?family=Abel|Coiny|Fjalla+One|Droid+Sans|Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Abel|Coiny|Fjalla+One|Droid+Sans|Oswald|Pathway+Gothic+One');
 </style></head>
 <template name="layout">
-	{{> header}}
+	{{> Template.dynamic template=header}}
 	{{> jumbotron}}
 	<div class="container main-content">
-	{{> Template.dynamic template=main data=params}}
+	{{> Template.dynamic template=main }}
 </div>
 	{{> footer}}
 </template>

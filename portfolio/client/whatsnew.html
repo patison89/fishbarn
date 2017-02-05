@@ -1,0 +1,98 @@
+<template name="whatsnew">
+  <h2>WHAT'S NEW</h2>
+  <ul>
+   {{#if blogReady}}
+     {{#each posts}}
+       <div class="posts ">
+         <h3><a href="{{blogPathFor 'blogShow'}}">{{title}}</a></h3>
+         <p  class="posts-header">Published on {{blogFormatDate publishedAt}} by {{authorName}}</p>
+
+         {{#if featuredImage}}
+          <img src="{{featuredImage}}" alt="" class="img-responsive posts-image center-block">
+      {{/if}}
+         <p class="blog-content">{{excerpt}}</p>
+         <a href="{{blogPathFor 'blogShow'}}" class=" flex-btn " role="button">READ MORE</a>
+       </div>
+     {{else}}
+       <p>No posts found.</p>
+     {{/each}}
+   {{else}}
+     <p>Loading...</p>
+   {{/if}}
+   {{blogPager}}
+ </ul>
+</template>
+<template name="singlepost">
+
+  <div class="meteor-blog-single">
+    {{#with post}}
+      {{#if featuredImage}}
+        {{> blogShowImage}}
+      {{/if}}
+    {{/with}}
+    {{#if blogReady}}
+      {{#with post}}
+        {{> blogBody}}
+      {{else}}
+        {{> Template.dynamic template=notFound}}
+      {{/with}}
+    {{else}}
+      {{> blogLoading}}
+    {{/if}}
+  </div>
+
+</template>
+
+
+<template name="blogBody">
+  <div class="meteor-blog-post">
+    <div class="meteor-blog-post-main">
+      {{#unless titleBackground}}
+        <h1 class="meteor-blog-post-title text-center">
+          {{title}}
+        </h1>
+        <div class="meteor-blog-post-meta text-center">
+          {{#if isAdmin}}
+             <small><a href="#" data-action="edit-post">{{ BlogLanguage.edit }}</a></small>
+             --
+          {{/if}}
+          {{ BlogLanguage.metaAuthorBy }} {{authorName}} {{ BlogLanguage.metaAuthorOn }} {{blogFormatDate publishedAt}}
+
+        </div>
+      {{/unless}}
+      <div id="commentable-area">
+        {{{html}}}
+      </div>
+    </div>
+    <div class="meteor-blog-back-link pull-left">
+      <a href="{{blogPathFor 'blogIndex'}}"><i class="fa fa-caret-left"></i>Back</a>
+    </div>
+    {{> shareit shareData}}
+    {{> disqus this}}
+  </div>
+</template>
+
+<template name="blogShowImage">
+  <div class="meteor-blog-featured-image">
+    <div class="meteor-blog-aspect-ratio-placeholder" style="">
+      <img src="{{featuredImage}}" alt="" class="img-responsive center-block">
+      {{#if titleBackground}}
+        <div class="meteor-blog-background-title">
+          <div class="center-block">
+            <h1 class="text-center">
+              {{title}}
+              {{#if isAdmin}}
+                 <small><a href="#" data-action="edit-post">{{ BlogLanguage.edit }}</a></small>
+              {{/if}}
+            </h1>
+            <div class="meteor-blog-post-meta text-center">
+              {{ BlogLanguage.metaAuthorBy }} {{authorName}} {{ BlogLanguage.metaAuthorOn }} {{blogFormatDate publishedAt}}
+              {{> blogTags }}
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+</template>

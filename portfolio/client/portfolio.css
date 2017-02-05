@@ -26,18 +26,36 @@ font-family: 'Droid Sans', sans-serif;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:active {
-color: #7BB3E6;
+color: #7EAAF3;
 }
 
  .navbar-inverse .navbar-nav > li > a {
   color: #ffffff;
+  transition: color 0.5s;
+  -webkit-transition: color 0.5s;
    }
    .navbar-inverse .navbar-brand {
      color: #ffffff;
    }
    .navbar-inverse .navbar-brand:hover {
-     color: #7BB3E6;
+     color: #7EAAF3;
    }
+   .btn-learn {
+     padding: 10px 30px 10px 30px;
+     border: solid 3px #ffffff;
+     color: #ffffff;
+     font-size: 1em;
+     margin: 10px;
+     transition: color 0.7s, border 0.7s;
+     -webkit-transition: color 0.7s, border 0.7s;;
+   }
+   .btn-learn:hover, .btn-learn:active, .btn-learn:focus   {
+     text-decoration: none;
+     color: #7EAAF3;
+     border: solid 3px #7EAAF3;
+
+   }
+
 /*FOOTER*/
 .footer{
   padding-top: 50px;
@@ -47,9 +65,12 @@ color: #7BB3E6;
 }
 .btn-social-icon{
   color: #ffffff;
+  transition: color 0.5s;
+  -webkit-transition: color 0.5s;
+
 }
-.btn-social-icon :hover, .btn-social-icon :visited, .btn-social-icon :active, .btn-social-icon :focus {
-  color:#7BB3E6;
+.btn-social-icon:hover, .btn-social-icon :visited, .btn-social-icon:active, .btn-social-icon:focus {
+  color:#7EAAF3;
 
 }
 table {
@@ -71,7 +92,10 @@ td {
 /*content templates*/
 h2 {
   padding: 10px;
-  border-bottom: 2px solid #7BB3E6;
+  border-bottom: 2px solid #7EAAF3;
+font-size: 1.8em;
+font-family: 'Oswald';
+
 }
 .news {
   font-size: 1.5em;
@@ -111,5 +135,115 @@ h2 {
 
   .product {
     max-height: 300px;
-    
+    padding: 5px;
+
   }
+  .fa-chevron-left{
+    padding: 5px;
+  }
+  .btncat {
+
+    width: 250px;
+    height: 150px;
+    margin: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px #C7C7C7 solid;
+    transition: color 0.5s;
+    -webkit-transition: color 0.5s;
+  }
+
+  .btncat:hover {
+    color: #ffffff;
+    background-image: url("aquaria.jpg");
+    background-size: cover;
+    text-decoration: none;
+
+  }
+ .center {
+   margin: auto;
+   width: 80%;
+ }
+ .media-heading {
+   padding: 5px;
+   border-bottom: solid 1px #7EAAF3;
+   font-weight: bold;
+ }
+ .btn-price {
+   font-weight: bold;
+   font-size: 1.2em;
+   padding: 10px;
+ }
+ .btn-navigate {
+  
+   font-size: 1.1em;
+   font-weight: bold;
+   transition: color 0.5s;
+   -webkit-transition: color 0.5s;
+
+ }
+ .btn-navigate:hover, .btn-navigate:focus {
+   text-decoration: none;
+   color: #7EAAF3;
+
+ }
+ /*blog customisation*/
+ .posts {
+   border: 1px solid #D5DCDE;
+   padding: 25px;
+   margin: 10px;
+  float: left;
+  max-width: 450px;
+  height: 490px;
+  text-align: center;
+  display: flex;
+  flex-flow: column ;
+
+ }
+ .blog-content{
+   height: 60%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+
+ }
+ .flex-btn {
+   align-self: flex-end;
+   margin-top:  auto;
+   font-weight: 600;;
+
+
+ }
+ .posts-image {
+   height: 200px;
+   padding: 10px;
+
+ }
+
+ .posts a:hover{
+   text-decoration: none;
+   font-weight: bold;
+
+ }
+ .posts:hover {
+    text-decoration: none;
+    background: rgba(254,254,254,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 85%, rgba(242,242,242,1) 99%, rgba(219,219,219,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(254,254,254,1)), color-stop(85%, rgba(254,254,254,1)), color-stop(99%, rgba(242,242,242,1)), color-stop(100%, rgba(219,219,219,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 85%, rgba(242,242,242,1) 99%, rgba(219,219,219,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 85%, rgba(242,242,242,1) 99%, rgba(219,219,219,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 85%, rgba(242,242,242,1) 99%, rgba(219,219,219,1) 100%);
+background: radial-gradient(ellipse at center, rgba(254,254,254,1) 0%, rgba(254,254,254,1) 85%, rgba(242,242,242,1) 99%, rgba(219,219,219,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#dbdbdb', GradientType=1 );
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed', GradientType=1 );
+
+ }
+
+.posts-header {
+  color: grey;
+
+}
+img.img-responsive {
+  max-height: 500px;
+}

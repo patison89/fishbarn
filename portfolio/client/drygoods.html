@@ -1,39 +1,50 @@
 
 <template name="drygoods">
-  <a href="/drygoods/food" ><img src="krillgran.jpg" alt="food"/></a>
-    <a href="#" class="fc-filter" data-fc-filter-field="category" data-fc-filter-value="watercare" ><img src="krillgran.jpg" alt="food"/></a>
+  <h2>DRY GOODS</h2>
+  <div class="row row-content center">
+    <div class="col-lg-12 col-md-6 col-xs-8 ">
+      <a href="/drygoods/food"><button type="button" class=" btncat">Food</button></a>
+      <a href="/drygoods/aquariumessentials"><button type="button" class="btncat">Aquarium Essentials</button></a>
+      <a href="/drygoods/substrate"><button type="button" class=" btncat">Substrate</button></a>
+    </div>
+    <div class="col-lg-12 col-md-6 col-xs-8 col-lg-offset-1">
+      <a href="/drygoods/watercare"><button type="button" class=" btncat">Water Care</button></a>
+      <a href="/drygoods/decoration"><button type="button" class=" btncat">Decoration</button></a>
+    </div>
+    </div>
 </template>
+
 <template name="goods">
 
       <h2>Dry goods</h2>
       <div class="row row-content">
 
-        <ul class="nav nav-tabs">
-          <li><a href="#" class="js-unset-filter">All</a></li>
-          <li><a href="#" class="js-set-food-filter">Food</a></li>
-          <li><a href="#" class="js-set-softlinefood-filter">Soft Line Food</a></li>
-          <li><a href="#" class="js-set-watertreatments-filter">Water Treatments</a></li>
-          <li><a href="#" class="js-set-accessories-filter">Accessories</a></li>
-        </ul>
 
+        <!-- {{> EasySearch.Input index=goodsIndex }}
+   <ul>
+       {{#EasySearch.Each index=goodsIndex }}
+           <li>Name of the player: {{name}}</li>
+       {{/EasySearch.Each}}
+   </ul> -->
+        {{#if Template.subscriptionsReady}}
         <!--Card-->
+        {{> Template.dynamic template=tabs }}
           {{#each goods}}
           <div class="col-md-3 col-sm-6 col-xs-12">
-
-
           <div class="card text-xs-center ">
-            <img class="card-image  img-fluid" src="{{img_src}}" alt="{{name}}">
-
-
+            <img class="card-image  img-fluid" src= "/{{img_src}}" alt="{{name}}"/>
             <div class="card-block">
                 <h4 class="card-title"> &pound;{{price}}</h4>
                 <p class="card-text">{{name}}</p>
-                <a href="/drygoods/{{_id}}" class="link-text"><h5>More <i class="fa fa-chevron-right"></i></h5></a>
+                <a href={{pathForProduct}} class="btn-navigate">MORE <i class="fa fa-chevron-right"></i></a>
 
             </div>
         </div>
       </div>
         {{/each}}
+        {{else}}
+              <p>Loading...</p>
+        {{/if}}
         <!--/.Card-->
       </div>
 
@@ -41,17 +52,44 @@
 
 <template name="product">
 
+{{#if Template.subscriptionsReady}}
+{{#with product}}
   <div class="media">
     <div class="media-left">
       <a href="#">
-        <img class="media-object product " src="{{img_src}}" alt="{{name}}">
+        <img class="media-object product " src="/{{img_src}}" alt="{{name}}">
       </a>
     </div>
-    <div class="media-body">
+    <div class="media-body ">
       <h4 class="media-heading">{{name}}</h4>
-      <p>&pound;{{price}}</p>
-      <p>{{description}}</p>
-      <a href="/drygoods" class="link-text"><h5> <i class="fa fa-chevron-left"></i>Back</h5></a>
+      <p class="btn-price">&pound;{{price}}</p>
+      <p style="padding: 10px">{{description}}</p>
+      <a href="/drygoods/{{category}}" class="btn-navigate"> <i class="fa fa-chevron-left"></i>BACK</a>
     </div>
   </div>
+{{/with}}
+{{else}}
+      <p>Loading...</p>
+
+{{/if}}
+
 </template>
+
+<template name="food">
+  <ul class="nav nav-tabs">
+    <li><a href="#" class="js-unset-filter">All</a></li>
+    <li><a href="#" class="js-set-solidfood-filter">Solid Food</a></li>
+    <li><a href="#" class="js-set-softlinefood-filter">Soft Line Food</a></li>
+    <li><a href="#" class="js-set-frozenfood-filter">Frozen Food</a></li>
+  </ul>
+</template>
+
+<!-- <template name="searchBox">
+    {{> EasySearch.Input index=GoodsIndex }}
+
+    <ul>
+        {{#EasySearch.Each index=GoodsIndex }}
+            <li>Name of the player: {{name}}</li>
+        {{/EasySearch.Each}}
+    </ul>
+</template> -->

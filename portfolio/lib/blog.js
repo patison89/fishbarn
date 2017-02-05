@@ -1,8 +1,13 @@
 Blog.config({
-  title: "Leisure centre",
+  title: "Fish Barn",
+  adminRole: 'admin',
+  basePath: '/news',
+  blogIndexTemplate: 'whatsnew',
+  blogShowTemplate: 'singlepost',
+  dateFormat: 'Do MMM YYYY',
 
   rss: {
-    title: 'Leisure centre',
-    description: 'Variety of activities in on place!'
+    title: 'Fish Barn news',
+    description: 'Find out what is new in our stock'
   }
 });
