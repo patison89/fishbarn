@@ -2,33 +2,32 @@
 <template name="drygoods">
   <h2>DRY GOODS</h2>
   <div class="row row-content center">
-    <div class="col-lg-12 col-md-6 col-xs-8 ">
-      <a href="/drygoods/food"><button type="button" class=" btncat">Food</button></a>
-      <a href="/drygoods/aquariumessentials"><button type="button" class="btncat">Aquarium Essentials</button></a>
-      <a href="/drygoods/substrate"><button type="button" class=" btncat">Substrate</button></a>
+    <div class="col-lg-12 col-md-6 col-xs-8  ">
+      <a href="/drygoods/food" class="js-unset-filter"><button type="button" class=" btncat catf">FOOD</button></a>
+      <a href="/drygoods/aquariumessentials" class="js-unset-filter"><button type="button" class="btncat cata">AQUARIUM ESSENTIALS</button></a>
+      <a href="/drygoods/substrate" class="js-unset-filter"><button type="button" class=" btncat cats">SUBSTRATE</button></a>
     </div>
     <div class="col-lg-12 col-md-6 col-xs-8 col-lg-offset-1">
-      <a href="/drygoods/watercare"><button type="button" class=" btncat">Water Care</button></a>
-      <a href="/drygoods/decoration"><button type="button" class=" btncat">Decoration</button></a>
+      <a href="/drygoods/watercare" class="js-unset-filter"><button type="button" class=" btncat catw">WATER CARE</button></a>
+      <a href="/drygoods/decoration" class="js-unset-filter"><button type="button" class=" btncat catd">DECORATION</button></a>
     </div>
     </div>
 </template>
 
 <template name="goods">
+  <ol class="breadcrumb breadcrumb-plain">
+    <li><a href="/" class="js-unset-filter">HOME</a></li>
+    <li><a href="/drygoods" class="js-unset-filter">DRY GOODS</a></li>
+    <li class="active"><span>{{category}}</span></li>
+  </ol>
+<!-- Tabs for filtering -->
+<!-- <div class="col-md-2 col-md-push-10"> -->
+  {{> Template.dynamic template=tabs}}
+<!-- </div> -->
 
-      <h2>Dry goods</h2>
-      <div class="row row-content">
-
-
-        <!-- {{> EasySearch.Input index=goodsIndex }}
-   <ul>
-       {{#EasySearch.Each index=goodsIndex }}
-           <li>Name of the player: {{name}}</li>
-       {{/EasySearch.Each}}
-   </ul> -->
+<div class="row" >
         {{#if Template.subscriptionsReady}}
         <!--Card-->
-        {{> Template.dynamic template=tabs }}
           {{#each goods}}
           <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="card text-xs-center ">
@@ -36,17 +35,18 @@
             <div class="card-block">
                 <h4 class="card-title"> &pound;{{price}}</h4>
                 <p class="card-text">{{name}}</p>
-                <a href={{pathForProduct}} class="btn-navigate">MORE <i class="fa fa-chevron-right"></i></a>
-
+              </div>
+               <div class="card-block text-right">
+                <a href={{pathForProduct}} class="btn-navigate ">MORE <i class="fa fa-caret-right"></i></a>
             </div>
         </div>
-      </div>
-        {{/each}}
-        {{else}}
-              <p>Loading...</p>
-        {{/if}}
-        <!--/.Card-->
-      </div>
+        </div>
+          {{/each}}
+          {{else}}
+                <h3>Loading...</h3>
+          {{/if}}
+          <!--/.Card-->
+  </div>
 
 </template>
 
@@ -64,32 +64,46 @@
       <h4 class="media-heading">{{name}}</h4>
       <p class="btn-price">&pound;{{price}}</p>
       <p style="padding: 10px">{{description}}</p>
-      <a href="/drygoods/{{category}}" class="btn-navigate"> <i class="fa fa-chevron-left"></i>BACK</a>
+      <a href="/drygoods/{{category}}" class="btn-navigate"> <i class="fa fa-caret-left"></i>&nbsp;BACK</a>
     </div>
   </div>
 {{/with}}
 {{else}}
-      <p>Loading...</p>
+      <h3>Loading...</h3>
 
 {{/if}}
 
 </template>
-
+<!-- Tabs templates -->
 <template name="food">
-  <ul class="nav nav-tabs">
-    <li><a href="#" class="js-unset-filter">All</a></li>
-    <li><a href="#" class="js-set-solidfood-filter">Solid Food</a></li>
-    <li><a href="#" class="js-set-softlinefood-filter">Soft Line Food</a></li>
-    <li><a href="#" class="js-set-frozenfood-filter">Frozen Food</a></li>
+  <ul class="nav nav-tabs nav-square ">
+    <li class="active"><a href="#" class="js-unset-filter" data-toggle="tab">All</a></li>
+    <li><a href="#" class="js-set-solidfood-filter" data-toggle="tab">Solid Food</a></li>
+    <li><a href="#" class="js-set-softlinefood-filter" data-toggle="tab">Soft Line Food</a></li>
+    <li><a href="#" class="js-set-frozenfood-filter" data-toggle="tab">Frozen Food</a></li>
   </ul>
 </template>
+<template name="aquariumessentials">
+  <ul class="nav nav-tabs nav-square ">
+    <li class="active"><a href="#" class="js-unset-filter" data-toggle="tab">All</a></li>
+    <li><a href="#" class="js-set-filtration-filter" data-toggle="tab">Filtration</a></li>
+    <li><a href="#" class="js-set-heating-filter" data-toggle="tab">Heating</a></li>
+    <li><a href="#" class="js-set-airpumps-filter" data-toggle="tab">Air pumps</a></li>
+    <li><a href="#" class="js-set-circulationpumps-filter" data-toggle="tab">Circulation pumps</a></li>
+    <li><a href="#" class="js-set-aquaria-filter" data-toggle="tab">Aquaria</a></li>
+    <li><a href="#" class="js-set-lighting-filter" data-toggle="tab">Lighting</a></li>
+    <li><a href="#" class="js-set-accessories-filter" data-toggle="tab">Accessories</a></li>
+  </ul>
+</template>
+<template name="watercare">
+  <ul class="nav nav-tabs nav-square">
+    <li class="active"><a href="#" class="js-unset-filter" data-toggle="tab">All</a></li>
+    <li><a href="#" class="js-set-watertreatments-filter" data-toggle="tab">Water treatments</a></li>
+    <li><a href="#" class="js-set-testkits-filter" data-toggle="tab">Test kits</a></li>
+    <li><a href="#" class="js-set-wateradditives-filter" data-toggle="tab">Water Additives</a></li>
+    <li><a href="#" class="js-set-accessories-filter" data-toggle="tab">Accessories</a></li>
+  </ul>
+</template>
+<template name="all">
 
-<!-- <template name="searchBox">
-    {{> EasySearch.Input index=GoodsIndex }}
-
-    <ul>
-        {{#EasySearch.Each index=GoodsIndex }}
-            <li>Name of the player: {{name}}</li>
-        {{/EasySearch.Each}}
-    </ul>
-</template> -->
+</template>

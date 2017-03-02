@@ -1,30 +1,41 @@
-<template name="whatsnew">
+<template name="whatsnew ">
   <h2>WHAT'S NEW</h2>
-  <ul>
+  <!-- <ul> -->
+<div class="row-content " >
    {{#if blogReady}}
      {{#each posts}}
-       <div class="posts ">
-         <h3><a href="{{blogPathFor 'blogShow'}}">{{title}}</a></h3>
-         <p  class="posts-header">Published on {{blogFormatDate publishedAt}} by {{authorName}}</p>
+
+
+<article class="posts ">
+             <a href="{{blogPathFor 'blogShow'}}"><h4>{{title}}</h4></a>
+         <p  class="posts-header">Published on {{blogFormatDate publishedAt}}</p>
 
          {{#if featuredImage}}
-          <img src="{{featuredImage}}" alt="" class="img-responsive posts-image center-block">
+         <div class="post-thumbnail">
+          <a href="{{blogPathFor 'blogShow'}}"><img src="{{featuredImage}}" alt="" class="img-responsive center-block"></a>
+        </div>
       {{/if}}
          <p class="blog-content">{{excerpt}}</p>
-         <a href="{{blogPathFor 'blogShow'}}" class=" flex-btn " role="button">READ MORE</a>
-       </div>
+         <a href="{{blogPathFor 'blogShow'}}" class="flex-btn" role="button"> MORE&nbsp;<i class="fa fa-caret-right"></i></a>
+
+       </article>
      {{else}}
        <p>No posts found.</p>
      {{/each}}
    {{else}}
-     <p>Loading...</p>
+     <h3>Loading...</h3>
    {{/if}}
-   {{blogPager}}
- </ul>
+   <!-- <button role="button" class="btn-blue"> -->
+
+   <!-- </button> -->
+
+ </div>
+      {{blogPager}}
+
 </template>
 <template name="singlepost">
 
-  <div class="meteor-blog-single">
+  <div class="meteor-blog-single ">
     {{#with post}}
       {{#if featuredImage}}
         {{> blogShowImage}}
@@ -65,17 +76,18 @@
       </div>
     </div>
     <div class="meteor-blog-back-link pull-left">
-      <a href="{{blogPathFor 'blogIndex'}}"><i class="fa fa-caret-left"></i>Back</a>
+      <a href="{{blogPathFor 'blogIndex'}}" class="flex-btn"><i class="fa fa-caret-left"></i>BACK</a>
     </div>
-    {{> shareit shareData}}
-    {{> disqus this}}
+    <div class="pull-right ">
+          <p class="social">SHARE</p>{{> shareit shareData}}
+</div>
   </div>
 </template>
 
 <template name="blogShowImage">
   <div class="meteor-blog-featured-image">
     <div class="meteor-blog-aspect-ratio-placeholder" style="">
-      <img src="{{featuredImage}}" alt="" class="img-responsive center-block">
+      <img src="{{featuredImage}}" alt="post image" class="img-responsive center-block">
       {{#if titleBackground}}
         <div class="meteor-blog-background-title">
           <div class="center-block">

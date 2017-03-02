@@ -5,9 +5,10 @@ Blog.config({
   blogIndexTemplate: 'whatsnew',
   blogShowTemplate: 'singlepost',
   dateFormat: 'Do MMM YYYY',
+  pageSize: 6,
 
   rss: {
-    title: 'Fish Barn news',
+    title: 'The Fish Barn - News',
     description: 'Find out what is new in our stock'
   }
 });

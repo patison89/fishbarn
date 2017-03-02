@@ -750,7 +750,7 @@ Meteor.startup(function(){
       subcategory: "aquaria",
       name: "Aquael Smart Shrimp Set 30L Black",
       img_src: "shrimpsetblack.jpg",
-      price: "-",
+      price: "price in store",
       company: "Aquael",
       description:"Lovely little aquarium perfect for freshwater shrimp or small tropical fish.This aquariums compact design is perfect to fit in the smallest of spaces and yet still have a massive impact.Perfect for not only freshwater shrimp but also small tropical fish.<br><br>Exquisitely ornamental<br>Excellent LED lighting that stimulates the growth of plants and emphasises the natural colours of shrimp and fish<br>Fully equipped (heater, filter, food)<br>Dimensions- 29x29x35 cm"
     },
@@ -759,7 +759,7 @@ Meteor.startup(function(){
       subcategory: "aquaria",
       name: "Aquael Smart Shrimp Set 30L White",
       img_src: "shrimpsetwhite.jpg",
-      price: "-",
+      price: "price in store",
       company: "Aquael",
       description:"Lovely little aquarium perfect for freshwater shrimp or small tropical fish.This aquariums compact design is perfect to fit in the smallest of spaces and yet still have a massive impact.Perfect for not only freshwater shrimp but also small tropical fish.<br><br>Exquisitely ornamental<br>Excellent LED lighting that stimulates the growth of plants and emphasises the natural colours of shrimp and fish<br>Fully equipped (heater, filter, food)<br>Dimensions- 29x29x35 cm"
     },
@@ -1549,8 +1549,9 @@ Meteor.startup(function(){
 
 
   ];// end of goods array
-
+      Goods.remove({});
       if (Goods.find().count() ==0){
+
       _.each(goods, function(doc) {
         Goods.insert(doc);
     });
@@ -1558,6 +1559,18 @@ Meteor.startup(function(){
 
 
     console.log("Database has " + Goods.find().count());
+
+    ServiceConfiguration.configurations.upsert({
+      service: "facebook"
+      }, {
+        $set: {
+           appId: '11111',
+           clientId: '11111',    // <-- Same as appId
+           loginStyle: "popup",
+           secret: '22222'
+        }
+     });
+
 
 });
 // Meteor.publish("goods", function(){
@@ -1570,28 +1583,3 @@ Meteor.publish ('product', function(productId) {
 Meteor.publish('goods', function(category) {
         return Goods.find({category: category});
     });
-
-//
-//     Meteor.publish( 'goods', function( search ) {
-//       'use strict';
-//   check( search, Match.OneOf( String, null, undefined ) );
-//
-//   let query      = {},
-//       projection = { limit: 10, sort: { title: 1 } };
-//
-//   if ( search ) {
-//     let regex = new RegExp( search, 'i' );
-//
-//     query = {
-//       $or: [
-//         { title: regex },
-//         { artist: regex },
-//         { year: regex }
-//       ]
-//     };
-//
-//     projection.limit = 100;
-//   }
-//
-//   return Goods.find( query, projection );
-// });
