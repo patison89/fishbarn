@@ -10,6 +10,7 @@ font-family: 'Lato', sans-serif;
 .row-content {
   padding: 10px;
 }
+
 /*HEADER*/
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 .fade-in {
@@ -36,7 +37,7 @@ font-family: 'Lato', sans-serif;
   animation-duration: 1.5s;
   animation-name: slidein;
   font-family: 'Oswald';
-  /*font-size: 0.9em;*/
+ letter-spacing: 0.5px;
 }
 @keyframes slidein {
   from {
@@ -272,8 +273,10 @@ margin-left: 5px;
     }
 }
 
+
+
 .breadcrumb-plain {
-    height: 40px;
+    /*height: 40px;*/
     padding: 0;
     line-height: 36px;
     list-style: none;
@@ -281,6 +284,8 @@ margin-left: 5px;
     border-bottom: 2px solid #7EAAF3;
     font-size: 1.5em;
     font-family: 'Oswald', sans-serif;
+
+
 }
 .breadcrumb-plain li+li:before {
     padding: 5px;
@@ -340,8 +345,8 @@ margin-left: 5px;
     padding: 5px;
   }
   .btncat {
-
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
     height: 160px;
     margin: 10px;
     font-size:1.7em;
@@ -520,12 +525,31 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   color: grey;
 
 }
+/*SINGLE POST*/
+.meteor-blog-featured-image img{
+  max-height: 600px;
+}
+.social {
+  padding: 5px;
+  vertical-align: text-bottom;
+  display: inline-block;
+ font-size: 1.1em;
+ font-family: 'Oswald', sans-serif;
 
-/* Smartphones (portrait) ----------- */
+}
+
+/* media queries*/
 @media only screen and (max-width : 480px) {
 .posts{
   width: 100%;
   border-right: 1px solid #fff;
+}
+.breadcrumb-plain{
+  font-size: 1.3em;
+}
+.breadcrumb-plain li span {
+    padding: 0;
+
 }
 }
 @media only screen and (min-width : 481px) and (max-width : 1024px) {
@@ -541,16 +565,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   .posts:nth-child(3n+3) {
     border-right:  1px solid #fff;
   }
-}
-/*SINGLE POST*/
-.meteor-blog-featured-image img{
-  max-height: 600px;
-}
-.social {
-  padding: 5px;
-  vertical-align: text-bottom;
-  display: inline-block;
- font-size: 1.1em;
- font-family: 'Oswald', sans-serif;
-
 }

@@ -2,12 +2,12 @@
 <template name="drygoods">
   <h2>DRY GOODS</h2>
   <div class="row row-content center">
-    <div class="col-lg-12 col-md-6 col-xs-8  ">
+    <div class="col-lg-12 col-md-6 col-xs-12  ">
       <a href="/drygoods/food" class="js-unset-filter"><button type="button" class=" btncat catf">FOOD</button></a>
       <a href="/drygoods/aquariumessentials" class="js-unset-filter"><button type="button" class="btncat cata">AQUARIUM ESSENTIALS</button></a>
       <a href="/drygoods/substrate" class="js-unset-filter"><button type="button" class=" btncat cats">SUBSTRATE</button></a>
     </div>
-    <div class="col-lg-12 col-md-6 col-xs-8 col-lg-offset-1">
+    <div class="col-lg-12 col-md-6 col-xs-12 col-lg-offset-1">
       <a href="/drygoods/watercare" class="js-unset-filter"><button type="button" class=" btncat catw">WATER CARE</button></a>
       <a href="/drygoods/decoration" class="js-unset-filter"><button type="button" class=" btncat catd">DECORATION</button></a>
     </div>
@@ -15,6 +15,7 @@
 </template>
 
 <template name="goods">
+
   <ol class="breadcrumb breadcrumb-plain">
     <li><a href="/" class="js-unset-filter">HOME</a></li>
     <li><a href="/drygoods" class="js-unset-filter">DRY GOODS</a></li>
@@ -31,7 +32,7 @@
           {{#each goods}}
           <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="card text-xs-center ">
-            <img class="card-image  img-fluid" src= "/{{img_src}}" alt="{{name}}"/>
+              <a href={{pathForProduct}}><img class="card-image  img-fluid" src= "/{{img_src}}" alt="{{name}}"/></a>
             <div class="card-block">
                 <h4 class="card-title"> &pound;{{price}}</h4>
                 <p class="card-text">{{name}}</p>
@@ -54,13 +55,11 @@
 
 {{#if Template.subscriptionsReady}}
 {{#with product}}
-  <div class="media">
-    <div class="media-left">
-      <a href="#">
-        <img class="media-object product " src="/{{img_src}}" alt="{{name}}">
-      </a>
+  <div class="row">
+    <div class="col-sm-4 col-xs-12">
+        <img class=" product " src="/{{img_src}}" alt="{{name}}">
     </div>
-    <div class="media-body ">
+    <div class=" col-sm-8 col-xs-12 ">
       <h4 class="media-heading">{{name}}</h4>
       <p class="btn-price">&pound;{{price}}</p>
       <p style="padding: 10px">{{description}}</p>
