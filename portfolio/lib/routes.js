@@ -34,6 +34,14 @@ FlowRouter.route('/admin', {
     BlazeLayout.render("layout", {header: "admin",main: "home"});
   }
 });
+FlowRouter.route('/admin/blog', {
+  name: 'blogadmin',
+  action: function() {
+    BlazeLayout.render("layout", {header: "header",main: "blogAdmin"});
+  }
+});
+
+
 
   var drygoods = FlowRouter.group({
   name: 'drygoods',

@@ -4,8 +4,10 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-ryw:blog
 twbs:bootstrap
+
+accounts-password@1.3.3
+
 meteor-base@1.0.4
 mobile-experience@1.0.4
 mongo@1.1.14
@@ -36,4 +38,8 @@ shell-server
 ecmascript
 liberation:shareit
 service-configuration
+stylus
+
 tomwasd:flow-router-seo
+ian:accounts-ui-bootstrap-3
+ryw:blog

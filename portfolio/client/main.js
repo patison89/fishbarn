@@ -1,7 +1,8 @@
 
 // CONTACT US
 Template.contactus.onRendered(function() {
-  GoogleMaps.load();
+  GoogleMaps.load({ v: '3', key: 'AIzaSyCXNMxorXP2GV6PW1ETiLAXO_XUpUHIBkY', libraries: 'geometry,places' });
+
 });
 
 //Centering map when loaded
@@ -17,7 +18,7 @@ Template.map.helpers({
 });
 
 
-Template.contactus.onCreated(function() {
+Template.map.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('map', function(map) {
     // Add a marker to the map once it's ready
@@ -170,6 +171,24 @@ Template.goods.events({
   },
 
 });
+
+// Template.blogAdmin.events({
+//   'click [data-action=new-blog]': function(e, tpl) {
+//     e.preventDefault();
+//     return FlowRouter.go('blogAdminEdit', {
+//       id: 'new'
+//     });
+//   },
+//   'change [data-action=filtering]': function(e) {
+//     var filters;
+//     e.preventDefault();
+//     filters = {};
+//     if ($(e.currentTarget).val() === 'mine') {
+//       filters.userId = Meteor.userId();
+//     }
+//     return Session.set('filters', filters);
+//   }
+// });
 
 // //
 ShareIt.configure({
